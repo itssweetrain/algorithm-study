@@ -19,9 +19,9 @@ class Solution {
             translateCount ++
         }
             
-       do {
+        while (b != "1") {
            makeBinary(b)  
-       } while (b != "1")
+        }
 
        val answer = arrayListOf(translateCount,deleteCount)
     
