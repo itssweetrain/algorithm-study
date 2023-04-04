@@ -2,28 +2,16 @@ class Solution {
     fun solution(s: String): IntArray {
         var b = s
 
-        var translateCount = 0
-        var deleteCount = 0
-        
-        fun makeBinary(s: String) {
-            b = ""
-            for(i in s) {
-                val str = i.toString()
-                if(str == "0") {
-                    deleteCount ++
-                } else {
-                    b += str
-                }
-            }
-            b = Integer.toBinaryString(b.length) 
-            translateCount ++
-        }
+        var convert = 0
+        var zero = 0
             
         while (b != "1") {
-           makeBinary(b)  
+            zero += b.replace("1", "").count()
+            b = Integer.toBinaryString(b.replace("0", "").count())
+            convert ++
         }
 
-       val answer = arrayListOf(translateCount,deleteCount)
+       val answer = arrayListOf(convert,zero)
     
        return answer.toIntArray()
     }
