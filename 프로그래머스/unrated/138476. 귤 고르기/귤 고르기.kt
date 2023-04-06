@@ -1,26 +1,12 @@
 class Solution {
     fun solution(k: Int, tangerine: IntArray): Int {
         var answer: Int = 0
-        val categories = arrayListOf<Int>()
         var remainder = k
         
-        tangerine.sort()
-    
-        var cnt = 0
-        for(i in 0..tangerine.size - 1) {
-            cnt ++
-            
-            if ((i < tangerine.size - 1 && tangerine[i] != tangerine[i+1]) || (i == tangerine.size - 1 && cnt > 0)) {
-                categories.add(cnt)
-                cnt = 0
-            }  
-        }
-        
-        categories.sortDescending()
-        
-        for(i in categories) {
+        val sorted = tangerine.groupBy { it }.toList().sortedByDescending { it.second.size }
+        for(i in sorted) {
             answer ++
-            remainder -= i
+            remainder -= i.second.size 
             
             if(remainder <= 0) {
                 break
