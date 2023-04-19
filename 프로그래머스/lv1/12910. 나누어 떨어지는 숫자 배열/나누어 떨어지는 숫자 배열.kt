@@ -1,13 +1,13 @@
 class Solution {
     fun solution(arr: IntArray, divisor: Int): IntArray {
-        var answer = arrayListOf<Int>()
+        var answer = intArrayOf()
         
         for(i in arr) {
-            if(i % divisor == 0) answer.add(i)
+            if(i % divisor == 0) answer += i
         }
         
-        if(answer.isEmpty()) answer.add(-1)
+        if(answer.isEmpty()) answer += -1
         
-        return answer.sorted().toIntArray()
+        return answer.sortedArray()
     }
 }
